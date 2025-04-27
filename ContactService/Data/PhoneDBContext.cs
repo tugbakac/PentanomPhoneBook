@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ContactService.Data
 {
-    public class PhoneDBContext:DbContext
+    public class PhoneDBContext : DbContext
     {
         public PhoneDBContext(DbContextOptions<PhoneDBContext> options) : base(options) { }
 
@@ -13,10 +13,10 @@ namespace ContactService.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ContactInfo>()
-                .HasOne(ci => ci.Person)
-                .WithMany(p => p.ContactInfos)
+                .HasOne(ci => ci.Person) 
+                .WithMany(p => p.ContactInfos) 
                 .HasForeignKey(ci => ci.PersonId)
-                .OnDelete(DeleteBehavior.Cascade); // Cascade delete ekledik
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
